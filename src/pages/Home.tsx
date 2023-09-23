@@ -36,13 +36,15 @@ export default function Home() {
 const Chracters = styled.div`
     width: 100%;
     height: 100vh;
+    margin-top: 4rem;
     display: grid;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 3rem;
     grid-template-columns: repeat(4, 1fr);
 grid-template-rows: auto;
 `
 
 const Profile = styled.div`
-    background-color: bisque;
     width: auto;
     height: 10rem;
     padding: 1rem;
@@ -51,21 +53,29 @@ const Profile = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 25px -4px rgba(255,255,255,0.75);
+-webkit-box-shadow: 0px 0px 25px -4px rgba(255,255,255,0.75);
+-moz-box-shadow: 0px 0px 25px -4px rgba(255,255,255,0.75);
+
     &:hover{
-        background-color: cornflowerblue;
         cursor: pointer;
+        transform:scale(1.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
     }
-`
+`;
+
 const ProfileImgFrame = styled.div`
-    width: 6rem;
-    height: 6rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     overflow: hidden;
 `
 const ProfileImg = styled.img`
-width: 7rem;
+width: 11rem;
 object-fit: cover;
 `
 const ProfileName = styled.h3`
