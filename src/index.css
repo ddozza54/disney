@@ -134,11 +134,10 @@ body {
   background-size: 800% 800%;
   -webkit-animation: gradientAnimation 8s ease infinite;
 
-  animation: gradientAnimation 5s ease infinite;
+  animation: gradientAnimation 10s ease infinite;
   font-family: 'Courgette', cursive;
   box-sizing: border-box;
   color: #4b6584;
-
 }
 
 menu,
