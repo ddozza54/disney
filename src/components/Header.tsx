@@ -31,7 +31,7 @@ export default function Header() {
                     navigate('/')
                 }}><FaRegHandPointLeft /></BackButton> : <div></div>
                 }
-                <LogoImage id={'logo_big'} onClick={(e) => handleLogoClick(e)} src='src/assets/pngwing.png' width='250px' />
+                <img id={'logo_big'} onClick={(e) => handleLogoClick(e)} src='src/assets/pngwing.png' width='250px' />
                 <div></div>
             </HeaderWrapper_Big>
             <HeaderWrapper_Small scrolly={scrollYPosition}>
@@ -39,7 +39,7 @@ export default function Header() {
                     navigate('/')
                 }}><FaRegHandPointLeft /></BackButton> : <div></div>
                 }
-                <LogoImage id={'logo_small'} onClick={handleLogoClick} src='src/assets/pngwing.png' width='100px' />
+                <img id={'logo_small'} onClick={handleLogoClick} src='src/assets/pngwing.png' width='100px' />
                 <div></div>
             </HeaderWrapper_Small>
         </>
@@ -79,13 +79,10 @@ background-color: #77ceeb;
     cursor:${props => props.scrolly >= 150 ? 'pointer' : 'default'};
 }
 `;
-const LogoImage = styled.img`
-
-    `
 const BackButton = styled.div`
-font - size: x - large;
+font-size: x-large;
 border: none;
-background - color: transparent;
+background-color: transparent;
 padding: 1rem;
 &:hover{
     cursor: pointer;
