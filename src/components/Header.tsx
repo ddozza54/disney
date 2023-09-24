@@ -8,68 +8,84 @@ export default function Header() {
     const { id } = useParams();
     const [scrollYPosition, setScrollYPosition] = useState(0);
     const updateScroll = () => {
-        scrollYPosition < 200 ?
-            setScrollYPosition(window.scrollY || document.documentElement.scrollTop)
-            : setScrollYPosition(window.scrollY || document.documentElement.scrollTop);
+        setScrollYPosition(window.scrollY || document.documentElement.scrollTop)
     }
+    const handleLogoClick = (e: React.MouseEvent<HTMLImageElement>) => {
+        if (e.currentTarget.id === 'logo_big' && scrollYPosition < 150) {
+            navigate('/');
+        }
+        if (e.currentTarget.id === 'logo_small' && scrollYPosition >= 150) {
+            navigate('/');
+        }
+    }
+
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
     }, [])
-    console.log(scrollYPosition)
 
     return (
         <>
-            {scrollYPosition < 200 && !id ? (
-                <HeaderWrapper_Big scrolly={scrollYPosition}>
-                    {id ? <BackButton onClick={() => {
-                        navigate('/')
-                    }}><FaRegHandPointLeft /></BackButton> : <div></div>
-                    }
-                    <img src='src/assets/pngwing.png' width='250px' />
-                    <div></div>
-                </HeaderWrapper_Big>
 
-            ) : (
-                <HeaderWrapper_Small>
-                    {id ? <BackButton onClick={() => {
-                        navigate('/')
-                    }}><FaRegHandPointLeft /></BackButton> : <div></div>
-                    }
-                    <img src='src/assets/pngwing.png' width='100px' />
-                    <div></div>
-                </HeaderWrapper_Small>
-            )}
+            <HeaderWrapper_Big scrolly={scrollYPosition}>
+                {id ? <BackButton onClick={() => {
+                    navigate('/')
+                }}><FaRegHandPointLeft /></BackButton> : <div></div>
+                }
+                <LogoImage id={'logo_big'} onClick={(e) => handleLogoClick(e)} src='src/assets/pngwing.png' width='250px' />
+                <div></div>
+            </HeaderWrapper_Big>
+            <HeaderWrapper_Small scrolly={scrollYPosition}>
+                {id ? <BackButton onClick={() => {
+                    navigate('/')
+                }}><FaRegHandPointLeft /></BackButton> : <div></div>
+                }
+                <LogoImage id={'logo_small'} onClick={handleLogoClick} src='src/assets/pngwing.png' width='100px' />
+                <div></div>
+            </HeaderWrapper_Small>
         </>
     );
 }
 
 const HeaderWrapper_Big = styled.header<{ scrolly: number }>`
 width: 100%;
-height:8rem;
+height: 8rem;
 padding: 2rem;
 display: flex;
 justify-content:space-between;
 align-items: center;
-/* position: fixed; */
+position: sticky;
 margin-bottom: 3rem;
 opacity: ${props => props.scrolly < 150 ? 1 : 0};
+  top: 0; 
+  transition: all 0.8s;
+  &:hover{
+    cursor:${props => props.scrolly < 150 ? 'pointer' : 'default'};
+}
 `;
-const HeaderWrapper_Small = styled.header`
+const HeaderWrapper_Small = styled.header<{ scrolly: number }>`
 width: 100%;
-height:3rem;
+height: 3rem;
 padding: 0.8rem;
 display: flex;
 justify-content:space-between;
 align-items: center;
 position: fixed;
-top: 0;
+top:0;
 z-index: 5;
+opacity: ${props => props.scrolly >= 150 ? 1 : 0};
+transition: all 0.5s;
 background-color: #77ceeb;
+&:hover{
+    cursor:${props => props.scrolly >= 150 ? 'pointer' : 'default'};
+}
 `;
+const LogoImage = styled.img`
+
+    `
 const BackButton = styled.div`
-font-size: x-large;
+font - size: x - large;
 border: none;
-background-color: transparent;
+background - color: transparent;
 padding: 1rem;
 &:hover{
     cursor: pointer;

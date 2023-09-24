@@ -6,7 +6,6 @@ import Profile from '../components/Profile';
 
 export default function Home() {
     const { isLoading, data } = useQuery(["allCharacters"], fetchCharacters)
-    console.log(data)
     return (
         <>
             {
@@ -31,10 +30,10 @@ export default function Home() {
 }
 
 const Chracters = styled.div`
-    width: 100%;
+    width: 90%;
     height: 100vh;
-    /* margin-top: 15rem; */
     display: grid;
+    padding: 0 2rem;
     grid-column-gap: 0.5rem;
     grid-row-gap: 3rem;
     grid-template-columns: repeat(4, 1fr);
