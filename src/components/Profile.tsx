@@ -33,7 +33,7 @@ const ProfileWrapper = styled.div`
         cursor: pointer;
         transform:scale(1.1);
     background-color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
     }
 `;
 

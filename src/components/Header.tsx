@@ -25,22 +25,22 @@ export default function Header() {
 
     return (
         <>
-
             <HeaderWrapper_Big scrolly={scrollYPosition}>
                 {id ? <BackButton onClick={() => {
                     navigate('/')
                 }}><FaRegHandPointLeft /></BackButton> : <div></div>
                 }
-                <img id={'logo_big'} onClick={(e) => handleLogoClick(e)} src='src/assets/pngwing.png' width='250px' />
+                < Img_Big scrolly={scrollYPosition} id={'logo_big'} onClick={(e) => handleLogoClick(e)} src='src/assets/pngwing.png' width='250px' />
                 <div></div>
             </HeaderWrapper_Big>
+
             <HeaderWrapper_Small scrolly={scrollYPosition}>
                 {id ? <BackButton onClick={() => {
                     navigate('/')
-                }}><FaRegHandPointLeft /></BackButton> : <div></div>
-                }
-                <img id={'logo_small'} onClick={handleLogoClick} src='src/assets/pngwing.png' width='100px' />
-                <div></div>
+                }}><FaRegHandPointLeft />
+                </BackButton> : <div />}
+                < Img_Small scrolly={scrollYPosition} id={'logo_small'} onClick={handleLogoClick} src='src/assets/pngwing.png' width='100px' />
+                <div />
             </HeaderWrapper_Small>
         </>
     );
@@ -58,12 +58,8 @@ margin-bottom: 3rem;
 opacity: ${props => props.scrolly < 150 ? 1 : 0};
   top: 0; 
   transition: all 0.8s;
-  &:hover{
-    cursor:${props => props.scrolly < 150 ? 'pointer' : 'default'};
-}
 `;
-const HeaderWrapper_Small = styled.header<{ scrolly: number }>`
-width: 100%;
+const HeaderWrapper_Small = styled(HeaderWrapper_Big) <{ scrolly: number }>`
 height: 3rem;
 padding: 0.8rem;
 display: flex;
@@ -75,17 +71,27 @@ z-index: 5;
 opacity: ${props => props.scrolly >= 150 ? 1 : 0};
 transition: all 0.5s;
 background-color: #77ceeb;
-&:hover{
-    cursor:${props => props.scrolly >= 150 ? 'pointer' : 'default'};
-}
 `;
 const BackButton = styled.div`
 font-size: x-large;
 border: none;
 background-color: transparent;
-padding: 1rem;
+padding: 0.5rem;
 &:hover{
     cursor: pointer;
     scale: 1.1;
 }
 `;
+const Img_Big = styled.img<{ scrolly: number }>`
+    width: 250px;
+    position: relative;
+    &:hover{
+    cursor:${props => props.scrolly < 150 ? 'pointer' : 'default'};
+}
+`
+const Img_Small = styled.img<{ scrolly: number }>`
+width: 100px;
+    &:hover{
+    cursor:${props => props.scrolly >= 150 ? 'pointer' : 'default'};
+}
+`

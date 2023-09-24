@@ -118,7 +118,7 @@ section {
   }
 
   50% {
-    background-position: 100%
+    background-position: 90%
   }
 
   100% {
@@ -127,10 +127,8 @@ section {
 }
 
 body {
-  line-height: 1;
-  width: 100%;
   height: 200vh;
-  background: linear-gradient(257deg, #3793c0, #c1f6ff, #a5ddf8, #ebf8ff);
+  background: linear-gradient(270deg, #3793c0, #c1f6ff, #a5ddf8, #ebf8ff);
   background-size: 800% 800%;
   -webkit-animation: gradientAnimation 8s ease infinite;
 

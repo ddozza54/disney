@@ -42,11 +42,13 @@ export default function Detail() {
 }
 
 const DatailWrapper = styled.div`
+width: 100%;
 margin-top:7rem;
 height: 60%;
 display: flex ;
 justify-content: center;
 align-content: flex-start;
+padding-left: 3.5rem;
 `;
 const CharacterDetail = styled.div`
     display: flex;
@@ -62,13 +64,14 @@ box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.12);
 `
 const CharacterTitle = styled.h2`
 font-size: 2rem;
+margin: 2rem 0;
 `;
 const FilmWrapper = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-    margin: 1rem 0;
+margin: 1rem 0;
 `
 const FilmTitle = styled.h3`
 font-size: larger;

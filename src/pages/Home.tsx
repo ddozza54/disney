@@ -11,7 +11,7 @@ export default function Home() {
             {
                 isLoading ?
                     <span>Loading...</span> :
-                    (<ul>
+                    (<UI>
                         <Chracters>
                             {data?.map((character: Character) => (
                                 <li key={character.id}>
@@ -23,14 +23,14 @@ export default function Home() {
                                 </li>
                             ))}
                         </Chracters>
-                    </ul>)
+                    </UI>)
             }
         </>
     );
 }
 
 const Chracters = styled.div`
-    width: 90%;
+    width: 100%;
     height: 100vh;
     display: grid;
     padding: 0 2rem;
@@ -38,4 +38,8 @@ const Chracters = styled.div`
     grid-row-gap: 3rem;
     grid-template-columns: repeat(4, 1fr);
 grid-template-rows: auto;
+`
+const UI = styled.ul`
+    width: 100%;
+    justify-content: center;
 `
