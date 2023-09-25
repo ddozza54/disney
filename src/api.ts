@@ -5,5 +5,9 @@ export async function fetchCharacters() {
     return fetch(`${BASE_URL}characters`).then(response => response.json())
         .then(data =>
             data.filter((character: Character) => character.imageUrl).slice(0, 200));
-    //.sort(() => Math.random() - 0.5).slice(0, 200))
+}
+
+
+export async function fetchCharacter(id: string) {
+    return fetch(`${BASE_URL}characters/${id}`).then(response => response.json());
 }

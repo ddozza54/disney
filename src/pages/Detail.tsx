@@ -1,24 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-const BASE_URL = 'https://disney_api.nomadcoders.workers.dev/';
-
-function ScrollToTopOnMount() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    return null;
-}
+import { fetchCharacter } from '../api';
+import ScrollToTopOnMount from '../hooks/ScrollToTopOnMount';
 
 export default function Detail() {
     const { id } = useParams();
-    async function fetchCharacter() {
-        return fetch(`${BASE_URL}characters/${id}`).then(response => response.json());
-    }
-
-    const { isLoading, data } = useQuery(['character'], fetchCharacter)
+    const { isLoading, data } = useQuery(['character'], () => fetchCharacter(id))
     return (
         <DatailWrapper>
             <ScrollToTopOnMount />

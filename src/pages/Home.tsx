@@ -5,6 +5,7 @@ import { Character } from '../types';
 import Profile from '../components/Profile';
 import LoadingBar from 'react-top-loading-bar';
 import { useEffect, useState } from 'react';
+import ScrollToTopOnMount from '../hooks/ScrollToTopOnMount';
 
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
     }, [isLoading])
     return (
         <>
-
+            <ScrollToTopOnMount />
             {
                 isLoading ?
                     (<div>
